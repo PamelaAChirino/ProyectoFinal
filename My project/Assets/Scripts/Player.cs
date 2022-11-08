@@ -64,25 +64,10 @@ public class Player : MonoBehaviour
         if (col.transform.gameObject.name == "PortalPuertaA")
         {
             PositionChallengeOne();
-
-            // tiempoPortal -= Time.deltaTime;
-            // if (tiempoPortal <= 0 && !cambioObjTamaño)
-            // {
-            //     transform.localScale = scaleI * 2;
-            //     tiempoPortal = 7;
-            //     cambioObjTamaño = true;
-            // }
-            // if (tiempoPortal <= 0 && cambioObjTamaño)
-            // {
-            //     transform.localScale = scaleI;
-            //     tiempoPortal = 7;
-            //     cambioObjTamaño = false;
-            // }
-            Debug.Log("Detecto portal");
         }
-        if (col.transform.gameObject.name == "Cretas Maze")
+        if (col.transform.gameObject.name == "PortalDoorEndChallengeOne")
         {
-            Debug.Log("Toco Laberinto");
+            Respawn();
         }
     }
 
