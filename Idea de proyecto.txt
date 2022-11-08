@@ -1,0 +1,4 @@
+Proyecto final de desarrollo de video juegos
+Idea: Video juego que presenta diferentes trivias y desafios para, en base a ellos determinar diferentes putanjes de:
+fuerza,inteligencia, velocidad, etc y en base a estos puntajes se le otorgara al personaje(jugador) un tipo de dragon 
+que le otorgara poderes y diferentes habilidades para poder superar desafios del juego.
