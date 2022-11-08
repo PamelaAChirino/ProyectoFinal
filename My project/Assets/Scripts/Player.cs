@@ -11,18 +11,13 @@ public class Player : MonoBehaviour
     public float tiempo;
 
     public float tiempoPortal = 0;
+    public bool challengeOne=false;
 
     public GameObject baseChallengeOne;
 
     private Vector3 scaleI;
 
     private Vector3 posInitial;
-
-    int rndX;
-
-    int rndZ;
-
-    int rndRotY;
 
     // Start is called before the first frame update
     void Start()
@@ -64,10 +59,17 @@ public class Player : MonoBehaviour
         if (col.transform.gameObject.name == "PortalPuertaA")
         {
             PositionChallengeOne();
+            challengeOne= true;
         }
         if (col.transform.gameObject.name == "PortalDoorEndChallengeOne")
         {
             Respawn();
+            challengeOne= false;
+        }
+        if (col.transform.gameObject.name == "Enemy")
+        {
+            Respawn();
+            challengeOne= false;
         }
     }
 
