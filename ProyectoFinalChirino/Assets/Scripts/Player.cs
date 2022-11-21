@@ -18,11 +18,15 @@ public class Player : MonoBehaviour
     private Vector3 scaleI;
 
     private Vector3 posInitial;
+    public float distaciaRecorrida=0;
+    public Vector3 posAnterior;
+    public static float vidaJugador=100f;
 
     // Start is called before the first frame update
     void Start()
     {
         posInitial = transform.position;
+        posAnterior = transform.position;
     }
 
     // Update is called once per frame
@@ -43,6 +47,21 @@ public class Player : MonoBehaviour
         var move = xMove + zMove;
 
         transform.position += move;
+        if(posAnterior != transform.position){
+            DistaciaRecorrida();
+            posAnterior= transform.position;
+            if(vidaJugador>0)
+            {
+              vidaJugador--;
+            }
+            
+        }else{
+            if(vidaJugador<100f)
+            {
+              vidaJugador++;
+            }
+            
+        }
     }
 
     void CheckRotation()
@@ -81,5 +100,10 @@ public class Player : MonoBehaviour
     void Respawn()
     {
         transform.position = posInitial;
+    }
+    void DistaciaRecorrida()
+    {
+        HUDGame.distaciaRecorrida ++;
+
     }
 }
