@@ -19,6 +19,9 @@ public class HUDGame : MonoBehaviour
     private bool pausaActiva;
     public GameObject menuPausa;
     public GameObject uiElementGame;
+    [Header ("Mochila")]
+    private bool mochilaActiva;
+    public GameObject mochilaMenu;
 
     void Start()
     {
@@ -71,5 +74,17 @@ public class HUDGame : MonoBehaviour
     {
         Application.Quit();
 
+    }
+    public void MostrarMochila(){
+        if(mochilaActiva){
+            mochilaMenu.SetActive(false);
+            uiElementGame.SetActive(true);
+            mochilaActiva=false;
+        }else{
+            mochilaMenu.SetActive(true);
+            uiElementGame.SetActive(false);
+            mochilaActiva=true;
+
+        }
     }
 }
