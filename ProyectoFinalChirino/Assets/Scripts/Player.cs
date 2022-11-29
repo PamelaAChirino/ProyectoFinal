@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private UnityEvent myDistance;
+    [SerializeField] private UnityEvent lifePlayerEmergen;
+    [SerializeField] private UnityEvent lifePlayerFull;
+    [SerializeField] private UnityEvent myDragonFind;
     public float moveSpeed = 10f;
 
     public float rotateSpeed = 100f;
@@ -54,11 +59,20 @@ public class Player : MonoBehaviour
             {
               vidaJugador--;
             }
+            if(vidaJugador == 0 || vidaJugador<0)
+            {
+              lifePlayerEmergen.Invoke();
+            }
+
             
         }else{
             if(vidaJugador<100f)
             {
               vidaJugador++;
+            }
+            if(vidaJugador == 100f || vidaJugador > 100f)
+            {
+              lifePlayerFull.Invoke();
             }
             
         }
@@ -90,6 +104,9 @@ public class Player : MonoBehaviour
             Respawn();
             challengeOne= false;
         }
+        if(col.CompareTag("Dragon")){
+            myDragonFind.Invoke();
+        }
     }
 
     void PositionChallengeOne()
@@ -104,6 +121,10 @@ public class Player : MonoBehaviour
     void DistaciaRecorrida()
     {
         HUDGame.distaciaRecorrida ++;
+        if(HUDGame.distaciaRecorrida == 1000){
+            myDistance.Invoke();
+
+        }
 
     }
 }
