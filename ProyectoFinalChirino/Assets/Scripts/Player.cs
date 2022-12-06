@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.PostProcessing;
 
 public class Player : MonoBehaviour
 {
@@ -27,11 +28,16 @@ public class Player : MonoBehaviour
     public Vector3 posAnterior;
     public static float vidaJugador=100f;
 
+    public PostProcessVolume volumen;
+    private Vignette _vignette;
+
+
     // Start is called before the first frame update
     void Start()
     {
         posInitial = transform.position;
         posAnterior = transform.position;
+        volumen.profile.TryGetSettings(out _vignette);
     }
 
     // Update is called once per frame
@@ -58,6 +64,7 @@ public class Player : MonoBehaviour
             if(vidaJugador>0)
             {
               vidaJugador--;
+              _vignette.intensity.value ++;
             }
             if(vidaJugador == 0 || vidaJugador<0)
             {
@@ -69,6 +76,7 @@ public class Player : MonoBehaviour
             if(vidaJugador<100f)
             {
               vidaJugador++;
+              _vignette.intensity.value --;
             }
             if(vidaJugador == 100f || vidaJugador > 100f)
             {
@@ -123,7 +131,6 @@ public class Player : MonoBehaviour
         HUDGame.distaciaRecorrida ++;
         if(HUDGame.distaciaRecorrida == 1000){
             myDistance.Invoke();
-
         }
 
     }
